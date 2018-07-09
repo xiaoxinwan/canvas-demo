@@ -1,0 +1,23 @@
+#lxx {
+  background: green;
+  display: block;
+}
+
+body {
+  margin: 0px;
+  position: relative;
+}
+.actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.actions > #brush {
+  display: none;
+}
+.actions.press > #brush {
+  display: inline-block;
+}
+.actions.press > #eraser {
+  display: none;
+}
