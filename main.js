@@ -6,17 +6,38 @@ autoSetCanvasSize(canvas); //获取宽高
 listenToUser(canvas); //监听鼠标
 
 var eraserEnabled = false;
+pen.onclick = function() {
+  eraserEnabled = false;
+  pen.classList.add('active');
+  eraser.classList.remove("active");
+};
 eraser.onclick = function() {
-  //控制橡皮擦是否开启
   eraserEnabled = true;
-  actions.className = "actions press";
+  eraser.classList.add("active");
+  pen.classList.remove("active");
 };
 
-brush.onclick = function() {
-  //画笔的状态切换
-  eraserEnabled = false;
-  actions.className = "actions";
-};
+
+red.onclick = function(){
+    red.classList.add('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+    context.strokeStyle = 'red';
+
+}
+green.onclick = function(){
+    green.classList.add('active')
+    red.classList.remove('active')
+    blue.classList.remove('active')
+    context.strokeStyle = 'green'
+}
+blue.onclick = function(){
+    blue.classList.add('active')
+    red.classList.remove('active')
+    green.classList.remove('active')
+    context.strokeStyle = 'blue'
+}
+
 
 /*自设定的函数*/
 function autoSetCanvasSize(canvas) {
@@ -43,7 +64,6 @@ function drawCircle(x, y, radius) {
 function drawLine(x1, y1, x2, y2) {
   //圆点之间画线
   context.beginPath();
-  context.strokeStyle = "black";
   context.moveTo(x1, y1); //起点
   context.lineWidth = 5;
   context.lineTo(x2, y2); //终点
