@@ -72,7 +72,6 @@ function listenToUser(canvas) {
       }
     };
     canvas.ontouchmove = function(a) {
-      
       var x = a.touches[0].clientX;
       var y = a.touches[0].clientY;
 
