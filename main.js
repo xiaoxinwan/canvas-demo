@@ -1,3 +1,7 @@
+document.body.addEventListener('touchstart', function(lcc){
+  lcc.preventDefault()
+})
+
 var canvas = document.getElementById("lxx");
 var context = canvas.getContext("2d");
 var lineWidth = 5
