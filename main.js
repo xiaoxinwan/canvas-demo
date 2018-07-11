@@ -1,14 +1,16 @@
 var canvas = document.getElementById("lxx");
 var context = canvas.getContext("2d");
+var lineWidth = 5
 
 autoSetCanvasSize(canvas); //获取宽高
 
 listenToUser(canvas); //监听鼠标
 
+//左上角4个按钮
 var eraserEnabled = false;
 pen.onclick = function() {
   eraserEnabled = false;
-  pen.classList.add('active');
+  pen.classList.add("active");
   eraser.classList.remove("active");
 };
 eraser.onclick = function() {
@@ -16,37 +18,70 @@ eraser.onclick = function() {
   eraser.classList.add("active");
   pen.classList.remove("active");
 };
+clear.onclick = function(){
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+download.onclick = function(){
+  var img = canvas.toDataURL("image/png")
+  //document.write('<img src = "'+img+ '"/>')
+  var a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = img
+  a.download =  'mypic'
+  a.click()
+  
+}
 
-black.onclick = function(){
-  black.classList.add('active')
-  green.classList.remove('active')
-  blue.classList.remove('active')
-  red.classList.remove('active')  
-  context.strokeStyle = 'black';
+function fillCanvasBackgroundWithColor(canvas){
+  context.save();
+  context.globalCompositeOperation = 'destination-over';
+  context.fillStyle = 'white';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.restore();
+}
+fillCanvasBackgroundWithColor(canvas, 'white');
 
-}
-red.onclick = function(){
-    red.classList.add('active')
-    black.classList.remove('active')    
-    green.classList.remove('active')
-    blue.classList.remove('active')
-    context.strokeStyle = 'red';
 
+//颜色选择按钮
+black.onclick = function() {
+  black.classList.add("active");
+  green.classList.remove("active");
+  blue.classList.remove("active");
+  red.classList.remove("active");
+  context.strokeStyle = "black";
+};
+red.onclick = function() {
+  red.classList.add("active");
+  black.classList.remove("active");
+  green.classList.remove("active");
+  blue.classList.remove("active");
+  context.strokeStyle = "red";
+};
+green.onclick = function() {
+  green.classList.add("active");
+  black.classList.remove("active");
+  red.classList.remove("active");
+  blue.classList.remove("active");
+  context.strokeStyle = "green";
+};
+blue.onclick = function() {
+  blue.classList.add("active");
+  red.classList.remove("active");
+  black.classList.remove("active");
+  green.classList.remove("active");
+  context.strokeStyle = "blue";
+};
+
+//线的粗细选择
+thin.onclick = function(){
+  lineWidth = 5
 }
-green.onclick = function(){
-    green.classList.add('active')
-    black.classList.remove('active')        
-    red.classList.remove('active')
-    blue.classList.remove('active')
-    context.strokeStyle = 'green'
+thick.onclick = function(){
+  lineWidth = 10
 }
-blue.onclick = function(){
-    blue.classList.add('active')
-    red.classList.remove('active')
-    black.classList.remove('active')        
-    green.classList.remove('active')
-    context.strokeStyle = 'blue'
-}
+
+
+
 
 
 /*自设定的函数*/
@@ -75,7 +110,7 @@ function drawLine(x1, y1, x2, y2) {
   //圆点之间画线
   context.beginPath();
   context.moveTo(x1, y1); //起点
-  context.lineWidth = 5;
+  context.lineWidth = lineWidth;
   context.lineTo(x2, y2); //终点
   context.closePath();
   context.stroke();
@@ -90,8 +125,6 @@ function listenToUser(canvas) {
   if (document.body.ontouchstart !== undefined) {
     //触屏设备
     canvas.ontouchstart = function(a) {
-      console.log("开始");
-      console.log(a);
       var x = a.touches[0].clientX;
       var y = a.touches[0].clientY;
       using = true;
@@ -119,7 +152,6 @@ function listenToUser(canvas) {
       }
     };
     canvas.ontouchend = function() {
-      console.log("结束");
       using = false;
     };
   } else {

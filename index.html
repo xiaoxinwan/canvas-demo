@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="//at.alicdn.com/t/font_741422_gv1tze4zih5.js"></script>
+<script src="//at.alicdn.com/t/font_741422_q4cy9a801mo.js"></script>
 
 <head>
     <title>MY Canvas</title>
@@ -17,12 +17,22 @@
         <svg id=eraser class="icon" aria-hidden="true">
             <use xlink:href="#icon-eraser"></use>
         </svg>
+        <svg id=clear class="icon" aria-hidden="true">
+            <use xlink:href="#icon-custom-clear"></use>
+        </svg>
+        <svg id=download class="icon" aria-hidden="true">
+            <use xlink:href="#icon-download"></use>
+        </svg>
     </div>
     <ol class="colors">
         <li id='black' class="active black"></li>
         <li id='red' class="red"></li>
         <li id='green' class="green"></li>
         <li id='blue' class="blue"></li>
+    </ol>
+    <ol class="sizes">
+        <li class="thin" id="thin">细</li>
+        <li class="thick" id="thick">粗</li>
     </ol>
     <script src="./main.js"></script>
 </body>
