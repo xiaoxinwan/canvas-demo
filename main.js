@@ -17,9 +17,17 @@ eraser.onclick = function() {
   pen.classList.remove("active");
 };
 
+black.onclick = function(){
+  black.classList.add('active')
+  green.classList.remove('active')
+  blue.classList.remove('active')
+  red.classList.remove('active')  
+  context.strokeStyle = 'black';
 
+}
 red.onclick = function(){
     red.classList.add('active')
+    black.classList.remove('active')    
     green.classList.remove('active')
     blue.classList.remove('active')
     context.strokeStyle = 'red';
@@ -27,6 +35,7 @@ red.onclick = function(){
 }
 green.onclick = function(){
     green.classList.add('active')
+    black.classList.remove('active')        
     red.classList.remove('active')
     blue.classList.remove('active')
     context.strokeStyle = 'green'
@@ -34,6 +43,7 @@ green.onclick = function(){
 blue.onclick = function(){
     blue.classList.add('active')
     red.classList.remove('active')
+    black.classList.remove('active')        
     green.classList.remove('active')
     context.strokeStyle = 'blue'
 }
